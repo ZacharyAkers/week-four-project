@@ -1,34 +1,41 @@
-/*
-  Here is a guide for the steps you could take:
-*/
+    var iframeElement   = document.querySelector('iframe');
+    var widget1         = SC.Widget(iframeElement);
 
-// 1. First select and store the elements you'll be working with
-let audioPlayer = document.querySelector(".music-player");
-let form = document.querySelector(".search-form");
-let results = document.querySelector(".results");
 
-// 2. Create your `onSubmit` event for getting the user's search term
-form.onsubmit = function onSubmit() {
-  console.log(form.search.value);
-  event.preventDefault();
-  searchSoundCloud(form.search.value);
-};
+    (function(){
+    var widgetIframe = document.getElementById('sc-widget'),
+    widget       = SC.Widget(widgetIframe);
 
-// 3. Create your `fetch` request that is called after a submission
-function searchSoundCloud(song){
-  fetch("http://api.soundcloud.com/tracks/?client_id=8538a1744a7fdaa59981232897501e04&q=" + song)
-  .then(function(response){
-    response.json().then(function(data){
-      console.log(data);
+    widget.bind(SC.Widget.Events.READY, function(){
+    widget.bind(SC.Widget.Events.PLAY, function(){
+    // get information about currently playing sound
+    widget.getCurrentSound(function(currentSound){
+    console.log('sound ' + currentSound.get('') + 'began to play');
+     });
+     });
+    // get current level of volume
+    widget.getVolume(function(volume){
+    console.log('current volume value is ' + volume);
+     });
+    // set new volume level
+    widget.setVolume(50);
+    // get the value of the current position
+    });
+
+    }());
     })
-  })
-}
 
-// 4. Create a way to append the fetch results to your page
-
-
-// 5. Create a way to listen for a click that will play the song in the audio play
-
+    $(function() { 
+    $("#search").click(function(){
+    //storing values from the url 
+    var searchrequest = $("#searchbar").val();
+    result = "https://w.soundcloud.com/player/?                url=http://soundcloud.com/"+searchrequest;
+    console.log(searchrequest);
+    //$('iframe src').html(result); 
+    console.log(result);
+    $("#sc-widget").attr("src", result);   
+    });
+    });
 
 
 
