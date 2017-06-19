@@ -1,13 +1,47 @@
-body {
-  background-color: #60d9f1;
+body{
+  background-color: tan;
 }
 
-h1 {
-  display: flex;
-  justify-content: center;
-}
+.icons{
+      width: 155px;
+      height: 30%;
+      border: 1px solid #ccc;
+      float: right;
+      margin: 5px;
+      padding: 10px;
+    }
 
-.music-player {
-  width: 85%;
-  margin-left: 7%;
-}
+.icons img{
+      height: 50%;
+      max-width: 90%;
+    }
+
+#artwork{
+      width:60%;
+      height:800px;
+      border:1px solid #ccc;
+      margin-left: 20%;
+    }
+
+label {
+      font-size: 18px;
+    }
+
+    .music-player{
+      width:90%;
+    }
+
+hr {
+      border-color: #ccc;
+      margin:40px 0 40px 0;
+    }
+
+#myRow {
+      padding: 20px;
+      text-align: center;
+    }
+
+#search_box {
+      padding: 5px;
+      width: 300px;
+    }
