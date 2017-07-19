@@ -1,28 +1,24 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8">
-    <title></title>
-    <link rel="stylesheet" href="styles.css" />
+    <title>Soundcloud</title>
+    <link href="https://fonts.googleapis.com/css?family=Bungee|Roboto" rel="stylesheet">
+    <link href="styles.css" rel="stylesheet">
   </head>
   <body>
     <div class="container">
-      <div id="myRow">
-          <h1>Really Awesome Music Site</h1>
-          <section class="player">
-            <audio class="music-player" controls="controls" id="player" src="" type="audio/mp3">
-          </section>
-          <hr />
-          <form onsubmit="return search()">
-            <label>search:</label>
-            <input type="text" value="" id="search_box" />
-            <input type="submit" value="submit" class="btn btn-primary" />
-          </form>
-          <hr />
-        <div id="artwork">
-        </div>
+        <audio id="audio" controls autoplay><src="#" type="audio/mp3"></audio>
+        <hr>
+      <div>
+        <input type="text" id="search" placeholder="Search Artist"></input><button id="search_button">Search</button>
       </div>
+        <hr>
+      <div class="row">
+      </div>
+     </div>
     </div>
-    <script type="text/javascript" src="main.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="main.js"></script>
   </body>
 </html>

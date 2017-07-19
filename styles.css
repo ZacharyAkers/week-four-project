@@ -1,47 +1,46 @@
 body{
-  background-color: tan;
+  font-family: "Roboto";
 }
 
-.icons{
-      width: 155px;
-      height: 30%;
-      border: 1px solid #ccc;
-      float: right;
-      margin: 5px;
-      padding: 10px;
-    }
+audio{
+  width: 80%;
+  margin-left: 10%;
+}
 
-.icons img{
-      height: 50%;
-      max-width: 90%;
-    }
+#search{
+  width: 50%;
+  margin-right: 20px;
+  margin-left: 20px;
+}
 
-#artwork{
-      width:60%;
-      height:800px;
-      border:1px solid #ccc;
-      margin-left: 20%;
-    }
+#search_button{
+  height: 35px;
+  width: 100px;
+  color: white;
+  background-color: blue;
+  border-radius: 5px;
+  border: 0;
+  box-shadow:none;
+}
 
-label {
-      font-size: 18px;
-    }
+.row{
+  text-align: center;
+}
+.song_title{
+  color:navy;
+  font-weight: bold;
+  font-size: 12px;
+  margin-bottom: 0px;
+}
 
-    .music-player{
-      width:90%;
-    }
+.artist{
+  font-weight: bold;
+  font-size: 18px;
+  margin-bottom: 10px;
+}
 
-hr {
-      border-color: #ccc;
-      margin:40px 0 40px 0;
-    }
-
-#myRow {
-      padding: 20px;
-      text-align: center;
-    }
-
-#search_box {
-      padding: 5px;
-      width: 300px;
-    }
+.img-responsive{
+  height: 192px;
+  width: 192px;
+  margin-bottom: 13px;
+}

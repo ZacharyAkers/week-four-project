@@ -1,37 +1,44 @@
-function search() {
-        var searchValue = document.getElementById("search_box").value;
-        var searchUrl = "http://api.soundcloud.com/tracks.json?client_id=095fe1dcd09eb3d0e1d3d89c76f5618f&q=" + searchValue;
-        var html = "";
-        document.getElementById("artwork").innerHTML = "";
-        fetch(searchUrl).then(function(results) {
-          results.json().then(function(data) {
-            // data[0]
-            var count = (data.length < 10) ? data.length : 10;
-            var innerHtml = document.getElementById("artwork").innerHTML;
-            for(var i=0; i < count; i++) {
-              var myObj = data[i];
-              html += '<div class="icons" >';
-              html += '<img src="' + myObj.artwork_url + '" />'
-              html += '<br>';
-              html += '<h5>' + myObj.title + '</h5>';
-              html += '<h6>' + myObj.title + '</h6>';
-              html += '<input type="hidden" value="' + myObj.permalink_url + '" />';
-              html += '</div>';
-              document.getElementById("artwork").innerHTML = innerHtml + html;
-            }
-            var icons = document.getElementsByClassName("icons");
-            for (let i = 0; i < icons.length; i++){
-              let icon = icons[i];
-              icon.addEventListener("click", function(){
-                let  audioUrl = this.getElementsByTagName('input')[0].value;
-                document.getElementById("player").src = audioUrl;
-              });
-            }
-          });
-        });
-        return false;
-      }
+let search_field = document.getElementById('search');
+let button = document.getElementById('search_button');
+let play = document.getElementById('audio');
 
+button.addEventListener('click',function(event){
+  let search = search_field.value;
+  fetch("https://api.soundcloud.com/tracks/?client_id=095fe1dcd09eb3d0e1d3d89c76f5618f&q=" + search)
+    .then(function(response, reject){
+      response.json().then(function(data){
+        let artist = data;
+        let musicRow = document.querySelector('.row');
+
+        musicRow.innerHTML = '';
+        for(let i = 0; i < artist.length; i++){
+          let contentSection = document.createElement("div");
+          let artistName = document.createElement("p");
+          let title = document.createElement("p");
+          let albumArt = document.createElement("img");
+
+          albumArt.setAttribute("class", "img-responsive");
+          contentSection.setAttribute("class", "col-md-3 col-md-4");
+          artistName.setAttribute("class", "artist"); 
+          title.setAttribute("class", "song_title");
+
+          contentSection.appendChild(albumArt); 
+          contentSection.appendChild(title);
+          contentSection.appendChild(artistName);
+
+          albumArt.src += artist[i].artwork_url;
+          title.innerHTML += artist[i].title; 
+          artistName.innerHTML += artist[i].user.username;
+
+          musicRow.appendChild(contentSection);
+
+          albumArt.addEventListener('click', function(event){
+            play.src = artist[i].stream_url + "?client_id=095fe1dcd09eb3d0e1d3d89c76f5618f";
+                    });
+                }
+            });
+      });
+}); 
 
 
 
